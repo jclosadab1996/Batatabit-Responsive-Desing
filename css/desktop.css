@@ -1,0 +1,55 @@
+header img {
+  width: 250px;
+  height: 50px;
+}
+
+.main-exchange-container .main-exchange-container__batata-logo {
+  width: 100px;
+  height: 60px;
+  top: calc(100% - 30px);
+  left: calc(50% - 50px);
+}
+
+footer .right img {
+  width: 125px;
+  height: 90px;
+}
+
+.main-tables-container {
+  flex-direction: column;
+}
+
+.main-exchange-container .block,
+.main-exchange-container .main-tables-container {
+  width: 50%;
+  max-width: 500px;
+}
+
+.main-exchange-container {
+  display: flex;
+  justify-content: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.main-exchange-container .bitcoin-background {
+  width: 250px;
+  height: 250px;
+}
+
+/* font */
+.bitcoin-baby-img h2 {
+  font-size: 4.4rem;
+}
+
+.left li {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.header__title p,
+.main-plans__heading p,
+footer .left ul,
+.main-exchange-container__title p {
+  font-size: 1.6rem;
+}

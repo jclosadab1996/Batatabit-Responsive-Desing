@@ -1,0 +1,746 @@
+/* 
+1. Posicionamiento
+2. Modelo de caja
+3. Tipografia
+4. Visuales (boxshadow border-radius)
+5. otros
+ */
+:root {
+  --linear-gradient: linear-gradient(207.8deg, #201E1C 16.69%, #F7931A 100%);
+  --bitcoin-orage:#F7931A;
+	--soft-orange: #FFE9D5;
+	--secondary-blue:#1A9AF7; 
+	--soft-blue:#E7F5FF;
+	--warm-black:#201E1C;
+	--warm-blackplus1:#282623;
+	--gray:#BABABA;
+	--off-white:#FAF8F7;
+	--just-white:#FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%; /* para emplear rem */
+  font-family: 'DM Sans', sans-serif; /* ya que es la fuente dominante en la página */
+  scroll-behavior: smooth;  /* bonita transicion */
+}
+
+/*
+font-family: 'Inter', sans-serif;
+*/
+
+/* ----------header--------- */
+
+header {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 320px; /* ancho mínimo para móviles */
+  height: 350px;
+  width: 100%;
+  text-align: center;
+  background: var(--linear-gradient);
+}
+
+header img {
+  width: 150px;
+  height: 24px;
+  margin-top: 40px;
+  align-self: center; /* para centrar un solo elemento hijo de un flex container */
+  margin-bottom: 36px;
+}
+
+.header__title {
+  width: 90%;
+  min-width: 288px;
+  max-width: 900px;
+  align-self: center;
+  height: 138px;
+  /* border: 1px solid black; */
+}
+
+.header__title h1 {
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  color: var(--just-white);
+  margin-bottom: 20px;
+}
+.header__title p {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+  color: var(--soft-orange);
+/*   margin-bottom: 35px; */
+}
+
+.header__button {
+  display: inline-block;
+  position: absolute;
+  height: 48px; /* definidos en figma */
+  width: 229px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;    /* importante <a> posicionado absolute deja de ser clickeable parcialmente en este caso */
+  padding: 15px;
+  background-color: var(--off-white);
+  /* letras */
+  text-decoration: none;
+  color: var(--warm-black);
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 4px;
+  box-shadow: 0 2px 9px var(--warm-blackplus1) ;
+  /* box-shadow: -1px 1px 4px var(--warm-blackplus1) ; */
+}
+.header__button span {
+  background-image: url('../assets/icons/black-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 17px;
+  height: 8px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+
+/* -------main------- */
+
+main {
+  width: 100%;
+  min-width: 320px;
+  height: auto; /* el contenido definira su altura */
+  background-color: #e5e5e5;
+}
+
+
+/* -----main-exchange-container---- */
+
+.main-exchange-container {
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  padding-top: 45px;
+  /* margin-bottom: 30px; */
+  text-align: center;
+  /* para posicionar la batata */
+  position: relative;
+}
+
+/* background bitcoin */
+.main-exchange-container .bitcoin-background {
+  width: 195px;
+  height: 195px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  /* background-color: var(--bitcoin-orage); */
+  background-image: url('../assets/img/bitcoin.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-exchange-container__title {
+  width: 90%;
+  min-width: 288px; /* para mobiles */
+  max-width: 900px; /* para responsive */
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.main-exchange-container__title h2 {
+  margin-bottom: 24px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+}
+
+.main-exchange-container__title p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: #757575;
+}
+
+/* ----main---tabla-container */
+
+/* scroll para las tarjetas */
+
+.main-tables-container {
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+
+.main-currency-table.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+
+/* ------------------------ */
+.main-currency-table {
+  width: 70%;
+  margin: 0 auto;
+  min-width: 235px; /* minimo para responsive */
+  max-width: 500px; /* mas grande se vera mal */
+  height: 270px;
+  /* fuentes especificas */
+  font-family: 'Inter', sans-serif;
+  /* tros */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+}
+
+/* -----main----tabla-title */
+
+.main-currency-table .currency-table__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.3rem;
+  color: #FF9536;
+  text-align: left;
+  /* copiado de la clase de abajo */
+  width: 80%;
+  margin: 0 auto;
+  min-width: 200px; /* valor importante para responsive */
+  max-width: 300px; /* importante para que no creza demaciado */
+  /* ----------------- */
+  padding-left: 12px;
+  margin-bottom: 10px;
+}
+
+/* -----main----tabla--- */
+
+.currency-table-container {
+  width: 80%;
+  margin: 0 auto;
+  min-width: 200px; /* valor importante para responsive */
+  max-width: 300px; /* importante para que no creza demaciado */
+  height: 160px;  /* conforme al diseño */
+  margin-bottom: 16px;
+  /* posicion para boton flotante */
+  position: relative;
+}
+
+/* botton derecha */
+.currency-table-container .currency-table-container__right-button {
+  width: 7px;
+  height: 12px;
+  position: absolute;
+  top: calc(50% - 6px);
+  right: -24px;
+  background: url('../assets/icons/right-icon.svg') center/cover no-repeat;
+}
+/* ------------ */
+/* boton izquierda segunda tabla*/
+.currency-table-container .currency-table-container__left-button {
+  width: 7px;
+  height: 12px;
+  position: absolute;
+  top: calc(50% - 6px);
+  left: -24px;
+  background: url('../assets/icons/left-icon.svg') center/cover no-repeat;
+}
+/* ---------------- */
+
+.currency-table-container table {
+  width: 100%;
+  height: 100%;
+}
+
+/* dimencionamos la caja */
+.currency-table-container td {
+  width: 50%; /* cada tabla ocupa ese espacio */
+  font-weight: 500;
+  font-size: 1.6rem; 
+  line-height: 1.9rem;
+  color: #b5b8ac;
+  background-color: var(--just-white);
+  text-align: left;
+  padding-left: 12px;
+}
+
+/* columna derecha con estilos */
+
+.currency-table-container .table--right {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  color: #757575;
+}
+
+/* bordes redondeados */
+
+.currency-table-container .table--top-left {
+  border-top-left-radius: 8px;
+}
+.currency-table-container .table--top-right {
+  border-top-right-radius: 8px;
+}
+.currency-table-container .table--bottom-left {
+  border-bottom-left-radius: 8px;
+}
+.currency-table-container .table--bottom-right {
+  border-bottom-right-radius: 8px;
+}
+
+/* iconos down and up */
+
+.currency-table-container .down {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 10px;
+  background: url(../assets/icons/trending-down.svg) center/cover no-repeat;
+}
+
+.currency-table-container .up {
+  display: inline-block; 
+  width: 12px;
+  height: 12px;
+  margin-left: 10px;
+  background: url(../assets/icons/trending-up.svg) center/cover no-repeat;
+}
+
+/* update message */
+
+.main-currency-table .currency-table__date {
+  width: 175px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 8px;
+  background-color: var(--soft-orange);
+  border-radius: 8px;
+}
+
+.main-currency-table .currency-table__date p {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  /* font-weight: 700; */
+}
+
+/* estilos que modifican la segunda tabla */
+
+.main-currency-table .currency-table__title.currency-table__title--blue {
+  color: var(--secondary-blue);
+  /* valores redimensionados para posicionar mejor el titulo cuando crece la tabla */
+  width: 70%;
+  min-width: 190px; /* valor importante para responsive */
+}
+
+.currency-table-container.currency-table-container--shrunk {
+  width: 70%;
+  min-width: 190px;
+}
+
+.main-currency-table .currency-table__date.currency-table__date--colorless {
+  background-color: var(--soft-blue);
+}
+
+/* logo batata entre secciones */
+.main-exchange-container .main-exchange-container__batata-logo {
+  width: 40px;
+  height: 24px;
+  position: absolute;
+  top: calc(100% - 12px);
+  left: calc(50% - 20px);
+  background: url('../assets/img/batata-logo.svg') center/cover no-repeat;
+}
+
+
+/* -------main information and cards------- */
+
+.main-product-detail {
+  width: 100%;
+  min-width: 320px; /* !important para delimitar su creciemiento */
+  height: auto;
+  padding: 64px 16px 40px;  /* valores tomados defigma para las tajetas */
+  background-color: var(--warm-black);
+  /* margin-bottom: 32px; */
+}
+
+.main-product-detail .product-detail__heading {
+  width: 90%;
+  min-width: 290px; /* bueno para delimitar el minimo */
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.product-detail__heading h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+  color: var(--just-white);
+  margin-bottom: 24px;
+}
+
+.product-detail__heading p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: #808080;
+}
+
+/* producto cards */
+
+.product-card .product-card__item {
+  width: 100%;
+  min-width: 288px;
+  max-width: 350px; /* para evitar que cresca grotescamente */
+  min-height: 150;  /* con auto tambien funcionó, pero creo que es mejor así */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  background-color: var(--warm-blackplus1);
+  border-radius: 4px;
+  padding: 15px 16px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0,.16);
+  line-height: 1.8rem;
+}
+
+/* icons---- */
+.product-card__item .icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.product-card__item .clock {
+  background: url('../assets/icons/clock.svg') center/contain no-repeat ;
+}
+.product-card__item .eye {
+  background: url('../assets/icons/eye.svg') center/contain no-repeat;
+}
+.product-card__item .money {
+  background: url('../assets/icons/dollar-sign.svg') center/contain no-repeat ;
+}
+.product-card__item .check {
+  background: url('../assets/icons/check-circle.svg') center/contain no-repeat ;
+}
+
+/* titulo de tarjeta */
+.product-card__item .product-card__title {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--just-white);
+}
+.product-card__item .product-card__text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #808080;
+}
+
+/* imagen bitcoin baby */
+
+.bitcoin-baby-img {
+  width: 100%;
+  min-width: 320px; /* minimo que existe en pantallas */
+  height: 50vh;
+  background: url('../assets/img/bitcoin-babyx1.jpg') center/cover no-repeat;
+}
+
+.bitcoin-baby-img h2 {
+  text-align: center;
+  padding-top: 64px; /* taken from figma */
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  color: var(--just-white);
+}
+
+/* Seccion de planes */
+
+.main-plans {
+  width: 100%;
+  min-width: 320px;
+  background-color: #E5E5E5;
+  padding-bottom: 50px; /*hace espacio contra el footer*/
+}
+
+.main-plans__heading {
+  padding-top: 64px;
+  width: 90%;
+  height: auto;
+  min-width: 290px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.main-plans__heading h2 {
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  color: var(--warm-black);
+  margin-bottom: 24px;
+}
+
+.main-plans__heading p {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+  color: #757575;
+}
+
+/* ----slider de precios---- */
+
+.main-plans .main-plans__slider {
+  display: flex;
+  overflow-x: scroll;
+  height: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+}
+
+/* ----cards----- */
+
+.main-plans__card {
+  width: 50%;
+  min-width: 190px;
+  max-width: 250px; /*la tarjeta queda mejor*/
+  min-height: 250px;
+  margin: 20px 4px 20px;
+  position: relative;
+  scroll-snap-align: center;  /*regla para centrar las tarjetas y que no se queden cortadas*/
+  padding: 30px 15px 20px;
+  text-align: center;
+  background-color: var(--just-white);
+  box-shadow: 0 4px 8px rgba(89, 73, 30, .16);
+  border-radius: 8px;
+}
+
+.main-plans__card .recommened {
+  width: 110px;
+  height: 30px;
+  position: absolute;
+  top: -15px;
+  left: calc(50% - 55px);
+  padding: 8px;
+  line-height: 1.4rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  background-color: var(--bitcoin-orage);
+  color: var(--just-white);
+  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+}
+
+.card-info {
+  width: 100%;
+  height: 100%;
+}
+
+.card-info .card-info__title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.card-info .card-info__price {
+  margin-bottom: 16px;
+  font-size: 5.2rem;
+  line-height: 6.2rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  display: inline-block; /*para posicionar mejor el $*/
+}
+
+.card-info .card-info__price span {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  /* vertical-align: text-top; */
+  position: absolute;
+  top: 15px;
+  left: -11px;
+}
+
+.card-info .card-info__savings {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: #757575;
+  margin-bottom: 16px;
+}
+
+.card-info .card-info__ca {
+  width: 151px;
+  height: 48px;
+  border: 2px solid #F7931A;
+  background-color: var(--off-white);
+  border-radius: 4px;
+  font-size: 1.4rem;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.8rem;
+  font-weight: 700;
+}
+
+.card-info .card-info__ca span {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url('../assets/icons/arrow-right-orange.svg') center/cover no-repeat;
+  vertical-align: text-bottom;
+}
+
+.recommened.recommened--limited {
+  background-color: var(--gray);
+  color: var(--warm-black);
+}
+
+.recommened.recommened--basic {
+  background-color: var(--secondary-blue);
+}
+
+/* limitado */
+.card-info__ca.card-info__ca--limited {
+  color: var(--just-white);
+  background-color: #282623;
+} 
+
+.main-plans__card.main-plans__card--limited {
+  background-color: var(--warm-black);
+  color: var(--off-white);
+}
+
+/* -------seccion preguntas------- */
+
+.main-quetions .main-quetions__title h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+.main-quetions .question-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 275px;
+  max-width: 700px;
+}
+
+.main-quetions .question-container__item {
+  padding-bottom: 1.4em;
+}
+/* question title */
+.main-quetions .question-container__item-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-quetions .question-container__item-title p {
+  color: var(--warm-black);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: .7em;
+}
+
+
+
+.main-quetions .question-container__item-text p {
+  color: #757575;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2rem;
+  padding-left: .125em;
+}
+
+/* question icons */
+.question-container__item .question-container__icons {
+  padding: .5em;
+}
+.question-container__item .question-container__icons .down {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url(../assets/icons/black-arrow.svg) center/cover no-repeat;
+}
+.question-container__item .question-container__icons .up {
+  width: 12px;
+  height: 12px;
+  background: url(../assets/icons/up-orange-arrow.svg) center/cover no-repeat;
+}
+
+/* hide text  */
+.question-container__item-text {
+  display: none;
+}
+.show-text .question-container__item-text {
+  display: block;
+}
+
+.up {
+  display: none;
+}
+
+.show-text .up {
+  display: inline-block;
+}
+
+.show-text .down {
+  display: none !important;
+}
+
+/* -------foooter----- */
+
+footer {
+  display: flex;
+  width: 100%;
+  height: 150px;
+  background-color: var(--bitcoin-orage);
+}
+
+footer section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+footer .left ul {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  list-style: none;
+}
+
+.left li {
+  margin: 10px 0;
+}
+
+.left a {
+  text-decoration: none;
+  color: var(--just-white);
+}
+
+footer .right img {
+  width: 90px;
+  height: 70px;
+}

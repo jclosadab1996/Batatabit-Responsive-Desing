@@ -1,0 +1,57 @@
+/* header */
+header {
+  height: 250px;
+}
+
+/* tables */
+.main-tables-container {
+  display: flex;
+}
+
+/* cards of information */
+.product-card {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* hide left and right arrows */
+.currency-table-container .currency-table-container__right-button,
+.currency-table-container .currency-table-container__left-button {
+  display: none;
+}
+
+/* image baby */
+.bitcoin-baby-img {
+  height: 50vh;
+  background: url('../assets/img/bitcoin-babyx2.jpg') center/cover no-repeat;
+}
+
+/* fixes the width of tables */
+.main-currency-table {
+  width: auto;
+  /* las tres lineas reacomodan las tables en vista de tablet y desktop */
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* justify card prices */
+.main-plans .main-plans__slider {
+  justify-content: center;
+}
+
+/* font */
+.bitcoin-baby-img h2 {
+  font-size: 3.4rem;
+}
+
+.left ul {
+  display: flex;
+}
+
+.left li {
+  margin-left: 10px;
+  margin-right: 10px;
+}
